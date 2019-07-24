@@ -16,7 +16,7 @@ const httpOptions = {
 export class TodoService {
 
   todosUrl:string = 'https://jsonplaceholder.typicode.com/todos'; 
-  todolimit:string = '?_limit=100';
+  todolimit:string = '?_limit=6';
   constructor(private http:HttpClient) { }
 
 
@@ -35,4 +35,7 @@ export class TodoService {
   }
 
 
+  addTodo(todo:Todo): Observable<Todo>{
+    return this.http.post<Todo>(this.todosUrl,todo, httpOptions);
+  }
 }
